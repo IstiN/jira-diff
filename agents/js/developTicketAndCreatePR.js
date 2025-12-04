@@ -382,15 +382,28 @@ function action(params) {
             };
         }
 
-        // Move ticket to In Review status
+        // Assign ticket to initiator and move to In Review status
+        // Note: Many Jira workflows require assignment before status transition
         try {
+            const initiatorId = params.initiator;
+            if (initiatorId) {
+                jira_assign_ticket_to({
+                    key: ticketKey,
+                    accountId: initiatorId
+                });
+                console.log('✅ Assigned ticket to initiator');
+            }
+            
             jira_move_to_status({
                 key: ticketKey,
                 statusName: STATUSES.IN_REVIEW
             });
             console.log('✅ Moved ticket to In Review status');
         } catch (error) {
-            console.warn('Failed to move ticket to In Review:', error);
+            console.error('❌ Failed to assign and move ticket to In Review:', error);
+            // Log the full error details for debugging
+            console.error('Error details:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
+            // Still continue with the workflow - don't fail the entire process
         }
 
         // Post comment with PR details
