@@ -1,0 +1,17 @@
+{
+  "defaultMode": "bypassPermissions",
+  "skipDangerousModePermissionPrompt": true,
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Bash",
+      "mcp__serena__list_dir",
+      "Bash(*)",
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)"
+    ]
+  }
+}
