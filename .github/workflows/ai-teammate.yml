@@ -16,10 +16,10 @@ permissions:
   actions: read
 
 jobs:
-  cursor-agent:
+  ai-teammate:
     runs-on: ubuntu-latest
     concurrency:
-      group: cursor-agent-${{ inputs.config_file }}
+      group: ai-teammate-${{ inputs.config_file }}
       cancel-in-progress: false
 
     steps:
@@ -67,12 +67,13 @@ jobs:
         run: |
           echo "📦 Installing Codemie CLI..."
           npm install -g @codemieai/code
+          codemie install claude --supported
           echo "✅ Codemie CLI ready"
           codemie-claude --version || echo "Version check failed"
 
       - name: Install DMTools CLI
         run: |
-          curl -fsSL https://raw.githubusercontent.com/IstiN/dmtools/main/install.sh | bash
+          curl -fsSL https://raw.githubusercontent.com/IstiN/dmtools/v1.7.134/install.sh | bash -s v1.7.134
           echo "$HOME/.dmtools/bin" >> $GITHUB_PATH
 
       - name: Verify CLI Installations
