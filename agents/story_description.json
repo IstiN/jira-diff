@@ -21,7 +21,7 @@
       "fewShots" : ""
     },
     "cliCommands" : [
-      "./cicd/scripts/run-cursor-agent.sh \"**IMPORTANT** implementation details and development is not part of the task. Story description only is required. user request is in 'input' folder, read all files there and do what is requested\""
+      "./cicd/scripts/run-agent.sh \"**IMPORTANT** implementation details and development is not part of the task. Story description only is required. user request is in 'input' folder, read all files there and do what is requested\""
     ],
     "outputType" : "field",
     "fieldName" : "Description",
