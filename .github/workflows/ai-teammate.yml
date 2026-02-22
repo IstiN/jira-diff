@@ -96,6 +96,7 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           JIRA_BASE_PATH: ${{ vars.JIRA_BASE_PATH }}
           JIRA_AUTH_TYPE: ${{ vars.JIRA_AUTH_TYPE }}
+          JIRA_TRANSFORM_CUSTOM_FIELDS_TO_NAMES: ${{ vars.JIRA_TRANSFORM_CUSTOM_FIELDS_TO_NAMES }}
 
           # Confluence Configuration
           CONFLUENCE_EMAIL: ${{ secrets.JIRA_EMAIL }}

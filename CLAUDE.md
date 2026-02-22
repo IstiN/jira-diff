@@ -17,8 +17,8 @@ The `web/` folder contains a simple landing page for Safari/Chrome browser exten
 There is no `package.json`, no `npm` commands, and no traditional build/test pipeline. Everything runs via:
 
 - **DMTools CLI**: `dmtools run <config_file> [encoded_config]` — orchestrates the full workflow
-- **Cursor Agent**: `./cicd/scripts/run-cursor-agent.sh "<prompt>"` — executes AI coding tasks
-- **Plain Node.js**: agent scripts in `agents/js/` run directly, no transpilation needed
+- **Cursor Agent**: `./cicd/scripts/runep-agent.sh "<prompt>"` — executes AI coding tasks
+- **Plain GRAALJS!!! executed via Javascript**: agent scripts in `agents/js/` run directly, no transpilation needed
 
 Workflows are triggered via GitHub Actions (`ai-teammate.yml`) with `workflow_dispatch`, passing a `config_file` path (e.g. `agents/story_development.json`).
 

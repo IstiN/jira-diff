@@ -28,11 +28,26 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
+# --skip: print prompt and exit without running any agent (for post-action testing)
+for arg in "$@"; do
+  if [ "$arg" = "--skip" ]; then
+    PROMPT_FILE="${!#}"
+    echo "=== --skip mode: printing prompt ==="
+    echo ""
+    cat "$PROMPT_FILE"
+    echo ""
+    echo "=== skipped agent execution ==="
+    exit 0
+  fi
+done
+
 # Load dmtools.env if exists (for local runs)
+# Uses grep to filter only valid KEY=VALUE lines — avoids bash executing bare values
+# (e.g. a multi-line API key where the continuation line has no KEY= prefix)
 if [ -f "dmtools.env" ]; then
   echo "Loading environment from dmtools.env"
   set -a
-  source dmtools.env
+  source <(grep -E '^[A-Za-z_][A-Za-z0-9_]*=' dmtools.env)
   set +a
 fi
 

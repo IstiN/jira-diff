@@ -1,0 +1,14 @@
+{"epics":[
+  {
+    "key": "JD-18",
+    "summary": "Intake",
+    "description": "",
+    "priority": "Medium"
+  },
+  {
+    "key": "JD-1",
+    "summary": "CICD",
+    "description": "",
+    "priority": "Medium"
+  }
+]}

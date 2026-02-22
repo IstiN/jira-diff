@@ -8,7 +8,8 @@ const ISSUE_TYPES = {
     SUBTASK: 'Subtask',
     TASK: 'Task',
     STORY: 'Story',
-    BUG: 'Bug'
+    BUG: 'Bug',
+    EPIC: 'Epic'
 };
 
 // Jira Statuses
@@ -34,6 +35,7 @@ const LABELS = {
     AI_QUESTIONS_ASKED: 'ai_questions_asked',
     AI_SOLUTION_DESIGN_CREATED: 'ai_solution_design_created',
     AI_DEVELOPED: 'ai_developed',
+    AI_INTAKE: 'ai_intake',
     SD_CORE: 'sd_core',
     SD_API: 'sd_api',
     SD_UI: 'sd_ui',
