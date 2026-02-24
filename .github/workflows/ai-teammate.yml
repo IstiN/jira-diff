@@ -25,6 +25,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup Java Environment
         uses: ./.github/actions/setup-java-only
@@ -73,7 +76,7 @@ jobs:
 
       - name: Install DMTools CLI
         run: |
-          curl -fsSL https://raw.githubusercontent.com/IstiN/dmtools/v1.7.134/install.sh | bash -s v1.7.134
+          curl -fsSL https://raw.githubusercontent.com/IstiN/dmtools/v1.7.135/install.sh | bash -s v1.7.135
           echo "$HOME/.dmtools/bin" >> $GITHUB_PATH
 
       - name: Verify CLI Installations
