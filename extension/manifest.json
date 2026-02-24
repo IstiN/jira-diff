@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Jira Diff",
+  "version": "1.0.0",
+  "description": "Show diff in Jira fields. Foundation for diff and restore functionality in Jira issue history.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "host_permissions": [
+    "https://*.atlassian.net/*",
+    "http://*.atlassian.net/*"
+  ],
+  "content_scripts": [
+    {
+      "js": ["js/url-utils.js", "js/content-bootstrap.js", "content.js"],
+      "matches": [
+        "https://*.atlassian.net/browse/*",
+        "https://*.atlassian.net/projects/*/issues/*",
+        "https://*.atlassian.net/jira/software/*/browse/*",
+        "https://*.atlassian.net/jira/servicemanagement/*/browse/*",
+        "http://*.atlassian.net/browse/*",
+        "http://*.atlassian.net/projects/*/issues/*",
+        "http://*.atlassian.net/jira/software/*/browse/*",
+        "http://*.atlassian.net/jira/servicemanagement/*/browse/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

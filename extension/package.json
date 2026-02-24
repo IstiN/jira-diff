@@ -1,0 +1,9 @@
+{
+  "name": "jira-diff-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension for Jira Diff - diff and restore in Jira issue history",
+  "private": true,
+  "scripts": {
+    "test": "node js/url-utils.test.js && node js/content-bootstrap.test.js && node content.test.js"
+  }
+}
