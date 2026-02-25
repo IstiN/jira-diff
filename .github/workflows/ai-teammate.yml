@@ -1,7 +1,7 @@
 name: AI Teammate
 
 # Customize run name to show config and ticket key
-run-name: "${{ inputs.config_file }}${{ inputs.concurrency_key && format(' : {0}', inputs.concurrency_key) || '' }}"
+run-name: "${{ inputs.config_file }} : ${{ inputs.concurrency_key }}"
 
 on:
   workflow_dispatch:
@@ -13,8 +13,8 @@ on:
         description: 'Encoded or JSON Agent Config'
         required: false
       concurrency_key:
-        description: 'Unique key for concurrency grouping (e.g., JD-123). If not provided, uses run_id for full parallelism.'
-        required: false
+        description: 'Ticket key for concurrency grouping (e.g., JD-123)'
+        required: true
 
 permissions:
   contents: write
@@ -25,13 +25,28 @@ jobs:
   ai-teammate:
     runs-on: ubuntu-latest
     concurrency:
-      # Group by config_file + concurrency_key (if provided)
-      # If concurrency_key not provided, use run_id for unique group (full parallelism)
+      # Group by config_file + concurrency_key
       # This prevents duplicate runs on same ticket while allowing parallel processing of different tickets
-      group: ai-teammate-${{ inputs.config_file }}-${{ inputs.concurrency_key || github.run_id }}
+      group: ai-teammate-${{ inputs.config_file }}-${{ inputs.concurrency_key }}
       cancel-in-progress: false
 
     steps:
+      - name: 📋 Job Info
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "🤖 AI Teammate Workflow Started"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "📁 Config File: ${{ inputs.config_file }}"
+          echo "🎫 Ticket Key: ${{ inputs.concurrency_key }}"
+          if [ -n "${{ inputs.encoded_config }}" ]; then
+            echo "📝 Encoded Config: provided (${#ENCODED_CONFIG} chars)"
+          else
+            echo "📝 Encoded Config: (not provided - using default JQL from config)"
+          fi
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        env:
+          ENCODED_CONFIG: ${{ inputs.encoded_config }}
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
