@@ -1,5 +1,8 @@
 name: AI Teammate
 
+# Customize run name to show config and ticket key
+run-name: "${{ inputs.config_file }}${{ inputs.concurrency_key && format(' : {0}', inputs.concurrency_key) || '' }}"
+
 on:
   workflow_dispatch:
     inputs:
