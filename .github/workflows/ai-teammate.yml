@@ -9,6 +9,9 @@ on:
       encoded_config:
         description: 'Encoded or JSON Agent Config'
         required: false
+      concurrency_key:
+        description: 'Unique key for concurrency grouping (e.g., JD-123). If not provided, uses run_id for full parallelism.'
+        required: false
 
 permissions:
   contents: write
@@ -19,7 +22,10 @@ jobs:
   ai-teammate:
     runs-on: ubuntu-latest
     concurrency:
-      group: ai-teammate-${{ inputs.config_file }}
+      # Group by config_file + concurrency_key (if provided)
+      # If concurrency_key not provided, use run_id for unique group (full parallelism)
+      # This prevents duplicate runs on same ticket while allowing parallel processing of different tickets
+      group: ai-teammate-${{ inputs.config_file }}-${{ inputs.concurrency_key || github.run_id }}
       cancel-in-progress: false
 
     steps:
