@@ -88,6 +88,12 @@ jobs:
             codemie-claude --version || echo "codemie-claude version failed"
           fi
 
+      - name: Configure Git Author
+        run: |
+          git config --global user.name "AI Teammate"
+          git config --global user.email "agent.ai.native@gmail.com"
+          echo "✅ Git author configured as AI Teammate"
+
       - name: Run AI Teammate
         env:
           CURSOR_API_KEY: ${{ secrets.CURSOR_API_KEY }}
@@ -135,11 +141,16 @@ jobs:
 
         run: |
           echo "Using configuration: ${{ inputs.config_file }}"
+
+          # Build CI run URL for traceability
+          CI_RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          echo "CI Run URL: ${CI_RUN_URL}"
+
           if [ -n "${ENCODED_CONFIG}" ]; then
             echo "Encoded config received (raw):"
             printf '%s\n' "${ENCODED_CONFIG}"
-            dmtools run "${{ inputs.config_file }}" "${ENCODED_CONFIG}"
+            dmtools run "${{ inputs.config_file }}" "${ENCODED_CONFIG}" --ciRunUrl "${CI_RUN_URL}"
           else
             echo "No encoded config provided."
-            dmtools run "${{ inputs.config_file }}"
+            dmtools run "${{ inputs.config_file }}" --ciRunUrl "${CI_RUN_URL}"
           fi
