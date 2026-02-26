@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jira Diff - Safari and Chrome extensions to show diff in Jira fields">
-    <title>Hello Jira Diff</title>
+    <meta name="description" content="Jira Diff - Safari and Chrome extensions to show diff in Jira fields. AI-powered automation platform for managing Jira ticket workflows.">
+    <title>Jira Diff</title>
     <style>
         * {
             margin: 0;
@@ -18,80 +18,404 @@
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
             background: white;
             border-radius: 12px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            max-width: 600px;
+            padding: 48px 40px;
+            max-width: 800px;
             width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero {
             text-align: center;
+            margin-bottom: 48px;
         }
 
         h1 {
             color: #667eea;
             font-size: 2.5em;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-weight: 700;
         }
 
-        .description {
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.8;
+        .tagline {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 32px;
+            line-height: 1.7;
         }
 
-        .github-link {
+        .badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .badge-dot.purple { background: #764ba2; }
+        .badge-dot.blue { background: #667eea; }
+        .badge-dot.green { background: #28a745; }
+        .badge-dot.orange { background: #fd7e14; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
             display: inline-block;
-            background: #24292e;
-            color: white;
             text-decoration: none;
             padding: 12px 24px;
             border-radius: 6px;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 0.95em;
         }
 
-        .github-link:hover {
+        .btn-primary {
+            background: #24292e;
+            color: white;
+        }
+
+        .btn-primary:hover {
             background: #2f363d;
             transform: translateY(-2px);
         }
 
-        .github-link:active {
+        .btn-primary:active {
             transform: translateY(0);
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
+        .btn-secondary {
+            background: #667eea;
+            color: white;
+        }
 
+        .btn-secondary:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #444;
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #f8f9ff;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-card h3 {
+            font-size: 1em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .workflow-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .workflow-steps li {
+            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .workflow-steps li::before {
+            content: counter(step-counter);
+            min-width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .workflow-steps li .step-content strong {
+            display: block;
+            font-size: 0.95em;
+            color: #444;
+            margin-bottom: 2px;
+        }
+
+        .workflow-steps li .step-content span {
+            font-size: 0.88em;
+            color: #666;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            border-radius: 4px;
+            padding: 5px 12px;
+            font-size: 0.85em;
+            color: #555;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+        }
+
+        .extension-platforms {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .platform-card {
+            flex: 1;
+            min-width: 180px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e8eaf6;
+        }
+
+        .platform-icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .platform-card h3 {
+            font-size: 1em;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 6px;
+        }
+
+        .platform-card p {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #f0f0f0;
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
             .container {
                 padding: 30px 20px;
             }
 
-            .description {
+            h1 {
+                font-size: 2em;
+            }
+
+            .tagline {
                 font-size: 1em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .extension-platforms {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hello Jira Diff</h1>
-        <p class="description">
-            Safari and Chrome extensions to show diff in Jira fields. Deployment via GitHub Actions.
-        </p>
-        <a href="https://github.com/Uladzimir_Klyshevich/jira-diff" class="github-link" target="_blank" rel="noopener noreferrer">
-            View on GitHub
-        </a>
+
+        <div class="hero">
+            <h1>Jira Diff</h1>
+            <p class="tagline">
+                Browser extensions for Safari &amp; Chrome that display inline diffs on Jira fields.<br>
+                Backed by an AI-powered automation platform for end-to-end Jira ticket workflows.
+            </p>
+
+            <div class="badges">
+                <span class="badge"><span class="badge-dot purple"></span>Safari Extension</span>
+                <span class="badge"><span class="badge-dot blue"></span>Chrome Extension</span>
+                <span class="badge"><span class="badge-dot green"></span>GitHub Actions</span>
+                <span class="badge"><span class="badge-dot orange"></span>AI Automation</span>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://github.com/IstiN/jira-diff" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    View on GitHub
+                </a>
+                <a href="https://github.com/IstiN/jira-diff/issues" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                    Report an Issue
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Browser Extensions</h2>
+            <div class="extension-platforms">
+                <div class="platform-card">
+                    <div class="platform-icon" aria-hidden="true">&#63743;</div>
+                    <h3>Safari</h3>
+                    <p>Native Safari extension showing field diffs directly inside Jira tickets.</p>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon" aria-hidden="true">&#9670;</div>
+                    <h3>Chrome</h3>
+                    <p>Chrome extension with the same diff view, cross-platform for Chromium-based browsers.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Inline Field Diffs</h3>
+                    <p>See exactly what changed between Jira field versions without leaving the ticket view.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>AI Ticket Automation</h3>
+                    <p>AI agents process Jira tickets end-to-end: requirements, solution designs, code, and PRs.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>GitHub Actions CI/CD</h3>
+                    <p>Full deployment pipeline automated via GitHub Actions workflows with zero manual steps.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>WIP Label Protection</h3>
+                    <p>Label-based locking prevents concurrent automated edits on tickets under human review.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>AI Automation Workflow</h2>
+            <ol class="workflow-steps">
+                <li>
+                    <div class="step-content">
+                        <strong>Ticket Selection</strong>
+                        <span>JQL queries identify tickets matching configured criteria.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <strong>Pre-Action Check</strong>
+                        <span>WIP label detection skips tickets currently under manual review.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <strong>AI Processing</strong>
+                        <span>Cursor Agent or Codemie generates outputs: requirements, designs, and code.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-content">
+                        <strong>Post-Action</strong>
+                        <span>JavaScript agents parse the AI response, update Jira fields, and open pull requests.</span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">JavaScript (GraalJS)</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">DMTools CLI</span>
+                <span class="tech-tag">Cursor Agent</span>
+                <span class="tech-tag">Jira REST API</span>
+                <span class="tech-tag">Confluence API</span>
+                <span class="tech-tag">Figma API</span>
+                <span class="tech-tag">Gemini LLM</span>
+                <span class="tech-tag">Safari WebExtension</span>
+                <span class="tech-tag">Chrome Extension</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                Open source under the
+                <a href="https://github.com/IstiN/jira-diff/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>
+                &nbsp;&middot;&nbsp;
+                Deployed via <a href="https://github.com/IstiN/jira-diff/actions" target="_blank" rel="noopener noreferrer">GitHub Actions</a>
+            </p>
+        </footer>
+
     </div>
 </body>
 </html>
