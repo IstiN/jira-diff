@@ -1,0 +1,14 @@
+{
+  "name": "Teammate",
+  "params": {
+    "metadata": {
+      "contextId": "test_pr_creation"
+    },
+    "skipAIProcessing": true,
+    "outputType": "none",
+    "attachResponseAsFile": false,
+    "postJSAction": "agents/js/developTicketAndCreatePR.js",
+    "inputJql": "key = TEST-123",
+    "initiator": "712020:2a248756-40e8-49d6-8ddc-6852e518451f"
+  }
+}
