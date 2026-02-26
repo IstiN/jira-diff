@@ -92,3 +92,5 @@ Prevents concurrent automated processing of tickets being manually edited:
 | `FIGMA_TOKEN` | Figma integration |
 | `PAT_TOKEN` | GitHub PR creation via `gh` CLI |
 | `JIRA_BASE_PATH`, `CONFLUENCE_BASE_PATH` | Instance URLs |
+
+Yo!
