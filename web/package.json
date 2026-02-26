@@ -1,0 +1,14 @@
+{
+  "name": "jira-diff-web",
+  "version": "1.0.0",
+  "description": "Jira Diff landing page",
+  "private": true,
+  "scripts": {
+    "test": "jest --coverage",
+    "build": "node scripts/build-greeting-browser.js",
+    "pretest": "npm run build"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
