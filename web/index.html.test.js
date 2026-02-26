@@ -232,7 +232,9 @@ test('has "Post-Action" step', () => {
 });
 
 test('workflow list has exactly 4 steps', () => {
-    const steps = (html.match(/<li>/g) || []).length;
+    const workflowMatch = html.match(/class="workflow-steps"[\s\S]*?<\/ol>/);
+    const workflowHtml = workflowMatch ? workflowMatch[0] : '';
+    const steps = (workflowHtml.match(/<li>/g) || []).length;
     assert.strictEqual(steps, 4, `Expected 4 workflow steps, got ${steps}`);
 });
 
